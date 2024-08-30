@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "27788179055",
+    "project_id": "criandoapprn",
+    "storage_bucket": "criandoapprn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:27788179055:android:ad7428a02342fec882bf9a",
+        "android_client_info": {
+          "package_name": "com.criandoapprn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDk1N4shTTBhjeS91VThcOI7P4vhh3D9xw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
