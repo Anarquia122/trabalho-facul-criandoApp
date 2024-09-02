@@ -1,10 +1,10 @@
 import FornecedorLista from "../FornecedorLista";
-import { ScrollView } from "react-native";
+import { ScrollView, View } from "react-native";
 
 export function ListaFornecedores() {
     return (
-        <ScrollView>
+        <View>
             <FornecedorLista />
-        </ScrollView>
+        </View>
     )
 }
