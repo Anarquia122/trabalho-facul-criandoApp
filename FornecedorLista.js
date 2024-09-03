@@ -18,9 +18,7 @@ export default function FornecedorLista() {
     const isFocused = useIsFocused();
 
     useEffect(() => {
-        console.log('useEffect executado');
         gestor.obterTodos().then((objs) => {
-            console.log('Fornecedores retornados: ', objs);
             setFornecedores(objs);
         }).catch((error) => {
             console.error('Erro ao obter produtos: ', error);
@@ -49,6 +47,7 @@ export default function FornecedorLista() {
             <ScrollView>
 
                 <TextInput placeholder='Search'
+                    placeholderTextColor='#888'
                     clearButtonMode='always'
                     style={listaStyles.searchBar}
                     autoCapitalize='none'
@@ -82,7 +81,11 @@ export default function FornecedorLista() {
             >
                 <View style={listaStyles.modalContainer}>
                     <View style={listaStyles.modalContent}>
-                        <Picker value={categoryFilter} selectedValue={categoryFilter} onValueChange={(option) => setCategoryFilter(option)}>
+                        <Picker 
+                        value={categoryFilter} 
+                        style={{color: '#fff', backgroundColor: '#4f4f4f'}}
+                        selectedValue={categoryFilter} 
+                        onValueChange={(option) =>  setCategoryFilter(option)}>
                             <Picker.Item label='Nenhum' value='nenhum' />
                             <Picker.Item label='Jogos' value='jogos' />
                             <Picker.Item label='Consoles' value='consoles' />

@@ -12,14 +12,11 @@ class GestorDados {
         db.write(() => db.create('Fornecedor', fornecedor));
     }
     public async obterTodos(): Promise<Array<Fornecedor>> {
-        console.log('obterTodos chamado');
         let objetos = [];
         try {
             for (let obj of db.objects<Fornecedor>('Fornecedor')) {
-                console.log('Fornecedor encontrado: ', obj);
                 objetos.push(JSON.parse(JSON.stringify(obj)));
             }
-            console.log('Objetos retornados: ', objetos);
         } catch (error) {
             console.error('Erro ao obter fornecedores do banco: ', error);
         }

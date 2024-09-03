@@ -53,7 +53,8 @@ export const listaStyles = StyleSheet.create({
     //lista
 
     divLista: {
-        marginTop: 10
+        marginTop: 10,
+        minHeight: '97%'
     },
 
     searchBar: {
@@ -64,7 +65,8 @@ export const listaStyles = StyleSheet.create({
         width: '97%',
         height: 40,
         margin: 'auto',
-        marginBottom: 10
+        marginBottom: 10,
+        color: '#000'
     },
 
     btnFilter: {

@@ -46,7 +46,6 @@ export default function FornecedorForm({ navigation }) {
 
     const handleUploadComplete = (downloadUrl) => {
         setImagem(downloadUrl);
-        console.log('URL da imagem armazenada: ', downloadUrl);
     }
 
     return (
@@ -57,15 +56,18 @@ export default function FornecedorForm({ navigation }) {
                 <View style={cadastroStyles.divInput}>
                     <TextInput style={cadastroStyles.input}
                         placeholder='Nome'
+                        placeholderTextColor='#333'
                         value={nome} onChangeText={setNome} />
                     <TextInput style={cadastroStyles.input}
                         placeholder='Endereço'
+                        placeholderTextColor='#333'
                         value={endereco} onChangeText={setEndereco} />
                     <TextInput style={cadastroStyles.input}
                         placeholder='Contato (telefone/email)'
+                        placeholderTextColor='#333'
                         value={contato} onChangeText={setContato} />
 
-                    <Text>Categoria:</Text>
+                    <Text style={{color: '#000'}}>Categoria:</Text>
                     <Picker selectedValue={categoria} onValueChange={(itemValue) => setCategoria(itemValue)} style={cadastroStyles.inputOption}>
                         <Picker.Item label='Jogos' value='jogos' />
                         <Picker.Item label='Consoles' value='consoles' />

@@ -14,7 +14,8 @@ export const cadastroStyles = StyleSheet.create({
         height: 40,
         borderWidth: 1,
         borderColor: '#1c1c1c',
-        borderRadius: 10
+        borderRadius: 10,
+        color: '#000'
     },
 
     inputOption: {

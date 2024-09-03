@@ -22,8 +22,8 @@ export default function FornecedorItem(props) {
             </View>
             <View style={listaStyles.divInfo}>
                 <Text style={{color: '#1c1c1c', fontWeight: 800}}>{props.fornecedor.categoria}</Text>
-                <Text>{props.fornecedor.contato}</Text>
-                <Text>{props.fornecedor.endereco}</Text>
+                <Text style={{color: '#1c1c1c'}}>{props.fornecedor.contato}</Text>
+                <Text style={{color: '#1c1c1c'}}>{props.fornecedor.endereco}</Text>
             </View>
         </View>
     )

@@ -47,7 +47,6 @@ export default function Uploading({ onUploadComplete }) {
 
                 setUploadStatus('Upload successful!');
                 setIsUploading(false);
-                console.log('Download URL: ', downloadUrl);
 
                 if (onUploadComplete) {
                     onUploadComplete(downloadUrl);
@@ -55,7 +54,6 @@ export default function Uploading({ onUploadComplete }) {
             } catch (error) {
                 setUploadStatus('Upload failed');
                 setIsUploading(false);
-                console.log('Upload Error: ', error);
             }
         }
     };
@@ -75,7 +73,7 @@ export default function Uploading({ onUploadComplete }) {
                     {/* <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} /> */}
                     <Button title="Upload Image" onPress={uploadImage} />
                     {isUploading && <ActivityIndicator size="large" color="#0000ff" />}
-                    {uploadStatus !== '' && <Text>{uploadStatus}</Text>}
+                    {uploadStatus !== '' && <Text style={{color: '#000'}}>{uploadStatus}</Text>}
                 </View>
             )}
         </View>
