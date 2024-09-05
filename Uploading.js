@@ -45,14 +45,14 @@ export default function Uploading({ onUploadComplete }) {
                 await task;
                 const downloadUrl = await storageRef.getDownloadURL();
 
-                setUploadStatus('Upload successful!');
+                setUploadStatus('Upload realizado com sucesso!');
                 setIsUploading(false);
 
                 if (onUploadComplete) {
                     onUploadComplete(downloadUrl);
                 }
             } catch (error) {
-                setUploadStatus('Upload failed');
+                setUploadStatus('Não foi possivel fazer o Upload');
                 setIsUploading(false);
             }
         }
@@ -61,19 +61,26 @@ export default function Uploading({ onUploadComplete }) {
     return (
         <View>
             <View style={cadastroStyles.divImg}>
-                <Image source={{ uri: imageUri || imgDefault }} style={cadastroStyles.img} />
+                <View style={cadastroStyles.divPerfil}>
+                    <Image source={{ uri: imageUri || imgDefault }} style={cadastroStyles.img} />
 
-                <TouchableOpacity style={cadastroStyles.btnImg} onPress={selectImage} activeOpacity={1}>
-                    <Text style={cadastroStyles.btnText}>📷</Text>
-                </TouchableOpacity>
+                    <TouchableOpacity style={cadastroStyles.btnImg} onPress={selectImage} activeOpacity={1}>
+                        <Text style={cadastroStyles.btnText}>📷</Text>
+                    </TouchableOpacity>
+                </View>
             </View>
 
             {imageUri && (
                 <View>
-                    {/* <Image source={{ uri: imageUri }} style={{ width: 200, height: 200 }} /> */}
-                    <Button title="Upload Image" onPress={uploadImage} />
+                    {/* <Button title="Upload Image" onPress={uploadImage} /> */}
+                    <TouchableOpacity
+                        onPress={uploadImage}
+                        style={cadastroStyles.btnUpload}
+                    >
+                        <Text style={{ color: '#fff' }}>Confirme o Upload</Text>
+                    </TouchableOpacity>
                     {isUploading && <ActivityIndicator size="large" color="#0000ff" />}
-                    {uploadStatus !== '' && <Text style={{color: '#000'}}>{uploadStatus}</Text>}
+                    {uploadStatus !== '' && <Text style={{ color: '#000', margin: 'auto' }}>{uploadStatus}</Text>}
                 </View>
             )}
         </View>

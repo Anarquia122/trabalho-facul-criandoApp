@@ -42,16 +42,21 @@ export const cadastroStyles = StyleSheet.create({
     //Uploading
 
     divImg: {
-        position: 'relative',
+        // position: 'relative',
         marginBottom: 10,
-        marginTop: 10
+        marginTop: 10,
+        width: '100%'
+    },
+
+    divPerfil: {
+        position: 'relative',
+        margin: 'auto',
     },
 
     img: {
         width: 150,
         height: 150,
         padding: 20,
-        margin: 'auto',
         backgroundColor: '#fff',
         borderWidth: 3,
         borderColor: '#1c1c1c',
@@ -64,15 +69,25 @@ export const cadastroStyles = StyleSheet.create({
         position: 'absolute',
         backgroundColor: '#1c1c1c',
         opacity: 1,
-        //alignItems: 'center',
-        //justifyContent: 'center',
         borderRadius: 100,
         bottom: 0,
-        right: '30%'
+        right: 0
     },
 
     btnText: {
         fontSize: 20,
         margin: 'auto'
+    },
+
+    btnUpload: {
+        backgroundColor: '#1e90ff',
+        margin: 'auto',
+        marginTop: 10,
+        marginBottom: 20,
+        paddingHorizontal: 20,
+        paddingVertical: 10,
+        borderWidth: 1.5,
+        borderColor: '#4169e1',
+        borderRadius: 5
     }
 })

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, TouchableOpacity, FlatList, ScrollView, TextInput, Image, Modal, Button } from 'react-native';
+import { Text, View, TouchableOpacity, FlatList, ScrollView, TextInput, Image, Modal, Button, RefreshControl } from 'react-native';
 import GestorDados from './dados/GestorDados';
 import FornecedorItem from './FornecedorItem';
 import { useIsFocused } from '@react-navigation/native';
@@ -14,16 +14,27 @@ export default function FornecedorLista() {
     const [searchQuery, setSearchQuery] = useState('');
     const [categoryFilter, setCategoryFilter] = useState('');
     const [isModalVisible, setIsModalVisible] = useState(false);
+    const [refreshing, setRefreshin] = useState(false);
 
     const isFocused = useIsFocused();
 
-    useEffect(() => {
+    const loadFornecedores = async () => {
         gestor.obterTodos().then((objs) => {
             setFornecedores(objs);
         }).catch((error) => {
             console.error('Erro ao obter produtos: ', error);
         });
+    }
+
+    useEffect(() => {
+        loadFornecedores();
     }, [isFocused]);
+
+    const onRefresh = async () => {
+        setRefreshin(true);
+        await loadFornecedores();
+        setRefreshin(false);
+    }
 
     const myKeyExtractor = item => {
         return item.codigo.toString();
@@ -63,6 +74,13 @@ export default function FornecedorLista() {
                             onDelete={() => excluirFornecedor(item.codigo)}
                             fornecedor={item} />
                     }
+
+                    refreshControl={
+                        <RefreshControl
+                            refreshing={refreshing}
+                            onRefresh={onRefresh}
+                        />
+                    }
                 />
             </ScrollView>
 
@@ -81,11 +99,11 @@ export default function FornecedorLista() {
             >
                 <View style={listaStyles.modalContainer}>
                     <View style={listaStyles.modalContent}>
-                        <Picker 
-                        value={categoryFilter} 
-                        style={{color: '#fff', backgroundColor: '#4f4f4f'}}
-                        selectedValue={categoryFilter} 
-                        onValueChange={(option) =>  setCategoryFilter(option)}>
+                        <Picker
+                            value={categoryFilter}
+                            style={{ color: '#fff', backgroundColor: '#4f4f4f' }}
+                            selectedValue={categoryFilter}
+                            onValueChange={(option) => setCategoryFilter(option)}>
                             <Picker.Item label='Nenhum' value='nenhum' />
                             <Picker.Item label='Jogos' value='jogos' />
                             <Picker.Item label='Consoles' value='consoles' />
